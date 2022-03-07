@@ -15,3 +15,16 @@ the plugin manager.
 ## Configuration
 
 **TODO:** Describe your plugin's configuration options (if any).
+
+Fire Alarm Module -> Listener activated when alarm is raised ->
+
+- Sent signal notification
+- Create event in OctoPrint - how to do this ?
+  - from octoprint.events import eventManager
+  - eventManager().fire(event, payload)
+- Handle event in octoPrint with [octoprint.events.register_custom_events hook](https://docs.octoprint.org/en/master/plugins/hooks.html#sec-plugins-hook-events-register-custom-events)
+- Try to connect this new event handling to OctoApp
+- Sent notification to Signal App
+
+Check if OptoEverywhere works fine !!!
+Other
