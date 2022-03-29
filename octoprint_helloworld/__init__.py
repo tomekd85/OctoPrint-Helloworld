@@ -11,7 +11,7 @@ class HelloWorldPlugin(octoprint.plugin.StartupPlugin,
                        octoprint.plugin.SettingsPlugin,
                        octoprint.plugin.AssetPlugin):
     def on_after_startup(self):
-        eventManager().fire()
+        # eventManager().fire()
         self._logger.info("Hello World! (more: %s)" % self._settings.get(["url"]))
 
     def get_settings_defaults(self):
