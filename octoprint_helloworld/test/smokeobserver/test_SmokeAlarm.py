@@ -1,10 +1,11 @@
+import unittest
 from smokeobserver.Observable import Observable
 from smokeobserver.SmokeAlarm import SmokeAlarmState, SmokeAlarmNotActive, SmokeAlarmActive
-from test.smokeobserver.TestListner import TestListener
+from test.smokeobserver.TestListener import TestListener
 from test.smokeobserver.TestObservable import TestObservable
 
 
-class TestSmokeAlarm:
+class TestSmokeAlarm(unittest.TestCase):
 
     def test_smoke_alarm_state_initialization(self):
         sas = SmokeAlarmState(Observable())
@@ -28,5 +29,3 @@ class TestSmokeAlarm:
         sas = SmokeAlarmState(observable)
         sas.raise_alarm()
         assert listener.is_called is True
-
-

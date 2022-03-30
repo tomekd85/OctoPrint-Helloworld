@@ -1,9 +1,10 @@
+import unittest
 import threading
 import time
 
 from smokeobserver.SmokeObserver import SmokeObserver
 from smokeobserver.VoltageReader import VoltageReader
-from test.smokeobserver.TestListner import TestListener
+from test.smokeobserver.TestListener import TestListener
 
 
 class TestVoltageReader(VoltageReader):
@@ -18,9 +19,9 @@ class TestVoltageReader(VoltageReader):
         self.value = value
 
 
-class TestSmokeObserver:
+class TestSmokeObserver(unittest.TestCase):
 
-    def setup_method(self, test_method):
+    def setUp(self):
         self.voltage_reader = TestVoltageReader()
         observer = SmokeObserver(self.voltage_reader)
         self.listener = TestListener()
@@ -37,6 +38,3 @@ class TestSmokeObserver:
         self.voltage_reader.set_value(1.3)
         time.sleep(0.1)
         assert self.listener.is_called is True
-
-
-
