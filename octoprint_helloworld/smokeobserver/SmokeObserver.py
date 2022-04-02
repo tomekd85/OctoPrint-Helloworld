@@ -1,7 +1,8 @@
-import sys
+from time import sleep
+
 from smokeobserver.Listener import Listener
-from smokeobserver.VoltageReader import VoltageReader
 from smokeobserver.Observable import Observable
+from smokeobserver.VoltageReader import VoltageReader
 
 
 class SmokeObserver(Observable):
@@ -13,9 +14,9 @@ class SmokeObserver(Observable):
     def register(self, observer: Listener):
         self.observers.append(observer)
 
-    def notify(self):
+    def notify(self, is_alarm):
         for observer in self.observers:
-            observer.update()
+            observer.update(is_alarm)
 
     def observe_smoke(self):
         while True:
@@ -23,6 +24,7 @@ class SmokeObserver(Observable):
             # sys.stdout.write("\033[K")
             voltage = self.mq2.read_voltage()
             # sys.stdout.write('ADC Voltage: ' + str(voltage) + 'V')
-            if voltage > 1:
-                self.notify()
+            is_fire_alarm = voltage > 1
+            self.notify(is_fire_alarm)
+            sleep(1)
 

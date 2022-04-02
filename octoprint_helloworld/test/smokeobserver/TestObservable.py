@@ -10,6 +10,6 @@ class TestObservable(Observable):
     def register(self, observer: Listener):
         self.observers.append(observer)
 
-    def notify(self):
+    def notify(self, is_alarm):
         for observer in self.observers:
-            observer.update()
+            observer.update(is_alarm)
