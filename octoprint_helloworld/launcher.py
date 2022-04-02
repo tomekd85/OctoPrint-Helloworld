@@ -9,6 +9,7 @@ from SmokeObserver import SmokeObserver
 
 
 class SignalAlarmNotifier:
+
     def run(self):
         smoke_observer = SmokeObserver(MQ2VoltageReader(busio, digitalio, MCP))
         sas = SmokeAlarmState(SignalFireAlarmSender().send_fire_alarm,
@@ -17,5 +18,5 @@ class SignalAlarmNotifier:
         smoke_observer.observe_smoke()
 
 
-
-
+if __name__ == '__main__':
+    SignalAlarmNotifier().run()
