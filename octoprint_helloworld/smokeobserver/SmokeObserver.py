@@ -1,5 +1,6 @@
 from time import sleep
 
+import fire_alarm_configuration
 from smokeobserver.Listener import Listener
 from smokeobserver.Observable import Observable
 from smokeobserver.VoltageReader import VoltageReader
@@ -24,7 +25,7 @@ class SmokeObserver(Observable):
             # sys.stdout.write("\033[K")
             voltage = self.mq2.read_voltage()
             # sys.stdout.write('ADC Voltage: ' + str(voltage) + 'V')
-            is_fire_alarm = voltage > 1
+            is_fire_alarm = voltage > fire_alarm_configuration.alarm_threshold
             self.notify(is_fire_alarm)
             sleep(1)
 
