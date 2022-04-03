@@ -1,4 +1,4 @@
-from SignalMessageSender import SignalMessageSender
+from singalmessage.SignalMessageSender import SignalMessageSender
 
 
 class SignalFireAlarmSender:
