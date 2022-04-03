@@ -1,6 +1,6 @@
 from typing import Callable
 
-from Listener import Listener
+from smokeobserver.Listener import Listener
 
 
 class SmokeAlarm:

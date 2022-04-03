@@ -1,5 +1,5 @@
 import requests
-from phoneData import phone
+from singalmessage.phoneData import phone
 
 
 class SignalMessageSender:
