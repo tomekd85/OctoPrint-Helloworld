@@ -2,10 +2,10 @@ import adafruit_mcp3xxx.mcp3008 as MCP
 import busio
 import digitalio
 
-from MQ2VoltageReader import MQ2VoltageReader
-from SignalFireAlarmSender import SignalFireAlarmSender
-from SmokeAlarm import SmokeAlarmState
-from SmokeObserver import SmokeObserver
+from smokeobserver.MQ2VoltageReader import MQ2VoltageReader
+from singalmessage.SignalFireAlarmSender import SignalFireAlarmSender
+from smokeobserver.SmokeAlarm import SmokeAlarmState
+from smokeobserver.SmokeObserver import SmokeObserver
 
 
 class SignalAlarmNotifier:
