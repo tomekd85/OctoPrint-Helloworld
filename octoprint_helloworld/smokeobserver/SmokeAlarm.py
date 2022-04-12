@@ -1,6 +1,9 @@
 from typing import Callable
-
+import logging
 from smokeobserver.Listener import Listener
+
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d.%m.%Y %I:%M:%S %p', filename='alarm_log.log',
+                    level=logging.INFO)
 
 
 class SmokeAlarm:
@@ -51,6 +54,7 @@ class SmokeAlarmActive(SmokeAlarm):
         self.alarm_state.set_current_state(SmokeAlarmNotActive(self.alarm_state))
         self.alarm_state.is_alarm_active = False
         self.alarm_state.clear_callback()
+        logging.info("Alarm Cleared.")
 
 
 class SmokeAlarmNotActive(SmokeAlarm):
@@ -62,6 +66,7 @@ class SmokeAlarmNotActive(SmokeAlarm):
         self.alarm_state.set_current_state(SmokeAlarmActive(self.alarm_state))
         self.alarm_state.is_alarm_active = True
         self.alarm_state.raise_callback()
+        logging.info("Alarm Raised.")
 
     def clear_alarm(self):
         pass

@@ -1,3 +1,4 @@
+import logging
 from time import sleep
 
 from smokeobserver.fire_alarm_configuration import alarm_threshold
@@ -5,6 +6,7 @@ from smokeobserver.Listener import Listener
 from smokeobserver.Observable import Observable
 from smokeobserver.VoltageReader import VoltageReader
 
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d.%m.%Y %I:%M:%S %p', filename='alarm_log.log')
 
 class SmokeObserver(Observable):
 
