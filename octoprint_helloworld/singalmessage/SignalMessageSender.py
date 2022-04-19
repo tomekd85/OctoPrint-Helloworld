@@ -5,9 +5,9 @@ from singalmessage.phoneData import phone
 class SignalMessageSender:
 
     def send_message(self, message):
-        recipient = phone.get("recipient")
+        recipient = "\"" + "\", \"".join(phone.get("recipient")) + "\""
         sender = phone.get("sender")
-        data = '{"message": "%s", "number": "%s", "recipients": [ "%s" ]}' % (message, sender, recipient)
+        data = '{"message": "%s", "number": "%s", "recipients": [ %s ]}' % (message, sender, recipient)
         headers = {"Content-Type": "application/json"}
         print(requests.post("http://localhost:8080/v2/send", headers=headers, data=data))
 
